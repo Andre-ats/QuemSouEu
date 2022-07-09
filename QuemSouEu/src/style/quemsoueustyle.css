@@ -53,10 +53,6 @@ body {
     background-color:rgb(236, 160, 30);
     padding:15px;
 }
-.menu-dentro h1, p{
-    text-align:center;
-
-}
 .imagem-contador, .dica-foto{
     width:100%;
     display:flex;
