@@ -1,0 +1,147 @@
+body {
+	background: linear-gradient(-45deg, #ee7752, orange, #f0a607, yellow);
+	background-size: 400% 400%;
+	animation: gradient 5s ease infinite;
+	height: 100vh;
+}
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+/*Header*/
+.header-int{
+    display:flex;
+    justify-content:center;
+    padding:30px;
+    height:10vh;
+}
+.header-dentro{
+    width:70%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+#h1-header{
+    margin:0px 30px;
+}
+.header-dentro img{
+    width:50px;
+    cursor:pointer;
+    margin:0px 10px;
+    padding:3px;
+    border:1px solid rgb(24, 24, 24);
+    border-radius:5px;
+}
+/*Menu*/
+.menu-int{
+    position:absolute;
+    width:99%;
+    display:flex;
+    justify-content:center;
+}
+.menu-dentro{
+    width:50%;
+    height:100%;
+    background-color:rgb(236, 160, 30);
+    padding:15px;
+}
+.menu-dentro h1, p{
+    text-align:center;
+
+}
+.imagem-contador, .dica-foto{
+    width:100%;
+    display:flex;
+    justify-content:center;
+}
+.menu-dentro p{
+    font-size:25px;
+}
+/*Container*/
+.container-inteiro{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.container-dentro{
+    width:80%;
+    height:90%;
+}
+/*Area Pergunta*/
+.area-pergunta{
+    width:50%;
+    height:80%;
+    margin:auto;
+}
+.area-pergunta div{
+    margin:15px 0px;
+    border:1px solid black;
+    border-radius:5px;
+    padding:15px;
+}
+/*Area Envio*/
+.area-envio{
+    height:20%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+#button{
+    height:40px;
+    width:150px;
+    margin:25px;
+    background-color:#f0a607;
+    border:1px solid black;
+    border-radius:5px;
+}
+#barra-escrita{
+    height:30px;
+    width:300px;
+
+}
+#button p{
+    margin:0px;
+}
+/*Responsividade*/
+@media (max-width:791px){
+    #h1-header{
+        font-size:10px;
+        margin:0px;
+    }
+    .header-dentro img{
+        width:30px;
+    }
+    #button p{
+        font-size:11px;
+    }
+}
+@media (max-width:492px){
+    #button p{
+        font-size:7px;
+    }
+    #barra-escrita{
+        width:100px;
+    }
+    #dicacount{
+        font-size:10px;
+    }
+}
+@media(max-width:394px){
+    .header-dentro img{
+        width:20px;
+    }
+}
+@media(max-width:374px){
+    .header-dentro img{
+        width:10px;
+        margin-right:10px;
+    }
+}

@@ -1,0 +1,16 @@
+.header-int{
+    display:flex;
+    justify-content:center;
+    padding:30px;
+}
+.header-dentro{
+    width:80%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+.header-dentro img{
+    width:50px;
+    cursor:pointer;
+}
