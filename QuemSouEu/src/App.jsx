@@ -160,7 +160,7 @@ function App(){
     <header className="header-int">
       <div className="header-dentro">
         <img onClick={abrirmenu} src={interrogação} alt="ajuda"/>
-        <a target={"blank_"} href="https://www.instagram.com/andre_ats_/"><img src={instagram} alt="Instagram Imagem"/></a>
+        <a target={"blank_"} href="#"><img src={instagram} alt="Instagram Imagem"/></a>
         <h1 id="h1-header">Quem Sou Eu?</h1>
         <img src={ConfigIMG} alt="Configurações Imagem"/>
       </div>
