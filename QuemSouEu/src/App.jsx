@@ -41,19 +41,6 @@ function App(){
     getapi()
   })
  
-  /*api teste*/
-  const apiteste ={
-    dica01:"Sou youtber e streamer", 
-    dica02:"Começei com vídeos no youtube quando eu tinha 15 anos",
-    dica03:"Participei de uma websérie",
-    dica04:"Já produzi músicas",
-    dica05:"Participei de algumas mansões",
-    dica06:"Já possuí um carro de mais de 600 mil reais",
-    nome:"Jon Vlogs"
-  }
-
-
-
   /*Onclick*/
   function valor(event){
     setValordoinput(event.target.value)
