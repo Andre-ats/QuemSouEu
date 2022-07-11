@@ -9,6 +9,7 @@ import './style/_Styles.scss'
 
 import Menu from "./components/Menu"
 import Header from './components/Header'
+import Dica from "./components/Dica"
 
 function App(){
   const [person, setPerson] = useState([])
@@ -54,11 +55,26 @@ function App(){
     setValordoinput(event.target.value)
   }
 
-  function mudarcount(){
-    console.log(person)
+  function checkHint({ nome }){
+    if(valordoinput === nome){
+      setDica01(true)
+      setDica02(true)
+      setDica03(true)
+      setDica04(true)
+      setDica05(true)
+      setDica06(true)
+      setAcerto(true)
+    }
+    else{
+      console.log('penis')
+    }
   }
-
   /*
+  function mudarcount(){
+    setCount(count + 1)
+    console.log(person)
+  }*/
+
   function mudarcount(){
     setCount(count + 1)
     if(count === 1){
@@ -66,84 +82,24 @@ function App(){
     }
       else if(count === 2){
         setDica02(true)
-        if(valordoinput === apiteste.nome){
-          setDica01(true)
-          setDica02(true)
-          setDica03(true)
-          setDica04(true)
-          setDica05(true)
-          setDica06(true)
-          setAcerto(true)
-        }else{
-          console.log("Você errou")
-        }
+        checkHint(person)
       }else if(count === 3){
         setDica03(true)
-        if(valordoinput === apiteste.nome){
-          setDica01(true)
-          setDica02(true)
-          setDica03(true)
-          setDica04(true)
-          setDica05(true)
-          setDica06(true)
-          setAcerto(true)
-        }else{
-          console.log("Você errou")
-        }
+        checkHint(person)
       }else if(count === 4){
         setDica04(true)
-        if(valordoinput === apiteste.nome){
-          setDica01(true)
-          setDica02(true)
-          setDica03(true)
-          setDica04(true)
-          setDica05(true)
-          setDica06(true)
-          setAcerto(true)
-        }else{
-          console.log("Você errou")
-        }
+        checkHint(person)
       }else if(count === 5){
         setDica05(true)
-        if(valordoinput === apiteste.nome){
-          setDica01(true)
-          setDica02(true)
-          setDica03(true)
-          setDica04(true)
-          setDica05(true)
-          setDica06(true)
-          setAcerto(true)
-        }else{
-          console.log("Você errou")
-        }
+        checkHint(person)
       }else if(count === 6){
         setDica06(true)
-        if(valordoinput === apiteste.nome){
-          setDica01(true)
-          setDica02(true)
-          setDica03(true)
-          setDica04(true)
-          setDica05(true)
-          setDica06(true)
-          setAcerto(true)
-        }else{
-          console.log("Você errou")
-        }
+        checkHint(person)
         }else if(count === 7){
-          if(valordoinput === apiteste.nome){
-          setDica01(true)
-          setDica02(true)
-          setDica03(true)
-          setDica04(true)
-          setDica05(true)
-          setDica06(true)
-          setAcerto(true)
-          }else{
-            setErro(true)
-          }
+          checkHint(person)
       }
   }
-  */
+  
 
   function abrirmenu(){
     if(interrogacao === false){
@@ -162,19 +118,19 @@ function App(){
     <div className="container-inteiro">
       <div className="container-dentro">
         <div className="area-pergunta">
-          {dica01 === true && <div><p id="dica">1ª Dica: {apiteste.dica01}</p></div>}
-          {dica02 === true && <div><p id="dica">2ª Dica: {apiteste.dica02}</p></div>}
-          {dica03 === true && <div><p id="dica">3ª Dica: {apiteste.dica03}</p></div>}
-          {dica04 === true && <div><p id="dica">4ª Dica: {apiteste.dica04}</p></div>}
-          {dica05 === true && <div><p id="dica">5ª Dica: {apiteste.dica05}</p></div>}
-          {dica06 === true && <div><p id="dica">6ª Dica: {apiteste.dica06}</p></div>}
+          {dica01 && <Dica person={person} num={1}/>}
+          {dica02 && <Dica person={person} num={2}/>}
+          {dica03 && <Dica person={person} num={3}/>}
+          {dica04 && <Dica person={person} num={4}/>}
+          {dica05 && <Dica person={person} num={5}/>}
+          {dica06 && <Dica person={person} num={6}/>}
         </div>
         <div className="area-envio">
           {count < 8 && acerto === false && count > 1 && <input id="barra-escrita" type="text" value={valordoinput} onChange={valor} required/> }
           {count < 8 && acerto === false && <button id="button" onClick={mudarcount}><p>Clique aqui para dicas</p></button>}
           {count < 8 && acerto === false && <h1 id="dicacount">Dica: {count - 1}/6</h1>}
-          {acerto === true && <h1>Você Acertou a resposta era: {apiteste.nome}</h1>}
-          {erro === true && <h1>Você Perdeu! A resposta era: {apiteste.nome}</h1>}
+          {acerto && <h1>Você Acertou a resposta era: {person.nome}</h1>}
+          {erro && <h1>Você Perdeu! A resposta era: {person.nome}</h1>}
         </div>
       </div>
     </div>
