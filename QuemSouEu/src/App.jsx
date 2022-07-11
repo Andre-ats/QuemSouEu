@@ -28,11 +28,9 @@ function App(){
   /*Função cabeçalho*/
   const[interrogacao, setInterrogacao] = useState(false)  
 
-  /*API*/
-  /*
   async function getapi(){
     try{
-      const api = await fetch("https://api.b7web.com.br/cinema/")
+      const api = await fetch(`https://api-guess.herokuapp.com/1&${process.env.API_KEY}`)
       const json = await api.json()
       setApiget(json)
     }catch(e){
@@ -42,8 +40,7 @@ function App(){
   useEffect(()=>{
     getapi()
   })
-  */
-
+ 
   /*api teste*/
   const apiteste ={
     dica01:"Sou youtber e streamer", 
