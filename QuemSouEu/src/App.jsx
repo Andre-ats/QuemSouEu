@@ -1,13 +1,18 @@
 import { Fragment, useEffect, useState } from "react"
 import axios from "axios"
 import moment from "moment"
+import { BeatLoader } from "react-spinners" 
+import Modal from "react-modal"
 
 import "./style/quemsoueustyle.css"
+import './style/_Styles.scss'
+
 import Menu from "./components/Menu"
 import Header from './components/Header'
 
 function App(){
   const [person, setPerson] = useState([])
+  const [isLoading, setLoading] = useState(true)
 
   {/*Use State*/}
   /*Contador*/ 
@@ -40,6 +45,7 @@ function App(){
       .get(baseURL)
       .then((res) => {
         setPerson(res.data)
+        setLoading(false)
       })
   }, [])
   
@@ -150,6 +156,7 @@ function App(){
 
   return(
   <Fragment>
+    {isLoading && <Modal className="modal-loading" ariaHideApp={false} isOpen={isLoading}><BeatLoader /></Modal>}
     <Header abrirmenu={abrirmenu}/>
     {interrogacao && <Menu />}
     <div className="container-inteiro">
