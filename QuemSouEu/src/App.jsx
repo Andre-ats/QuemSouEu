@@ -3,6 +3,7 @@ import axios from "axios"
 import moment from "moment"
 import { BeatLoader } from "react-spinners" 
 import Modal from "react-modal"
+import Blur from "react-blur"
 
 import "./style/quemsoueustyle.css"
 import './style/_Styles.scss'
@@ -69,35 +70,30 @@ function App(){
       console.log('penis')
     }
   }
-  /*
-  function mudarcount(){
-    setCount(count + 1)
-    console.log(person)
-  }*/
 
   function mudarcount(){
     setCount(count + 1)
     if(count === 1){
       setDica01(true)
     }
-      else if(count === 2){
-        setDica02(true)
-        checkHint(person)
-      }else if(count === 3){
-        setDica03(true)
-        checkHint(person)
-      }else if(count === 4){
-        setDica04(true)
-        checkHint(person)
-      }else if(count === 5){
-        setDica05(true)
-        checkHint(person)
-      }else if(count === 6){
-        setDica06(true)
-        checkHint(person)
-        }else if(count === 7){
-          checkHint(person)
-      }
+    else if(count === 2){
+      setDica02(true)
+      checkHint(person)
+    }else if(count === 3){
+      setDica03(true)
+      checkHint(person)
+    }else if(count === 4){
+      setDica04(true)
+      checkHint(person)
+    }else if(count === 5){
+      setDica05(true)
+      checkHint(person)
+    }else if(count === 6){
+      setDica06(true)
+      checkHint(person)
+    }else if(count === 7){
+      checkHint(person)
+    }
   }
   
 
@@ -118,12 +114,13 @@ function App(){
     <div className="container-inteiro">
       <div className="container-dentro">
         <div className="area-pergunta">
-          {dica01 && <Dica person={person} num={1}/>}
-          {dica02 && <Dica person={person} num={2}/>}
-          {dica03 && <Dica person={person} num={3}/>}
-          {dica04 && <Dica person={person} num={4}/>}
-          {dica05 && <Dica person={person} num={5}/>}
-          {dica06 && <Dica person={person} num={6}/>}
+          {dica01 && <Blur className='person-foto' blurRadius={30} img={person.foto} enableStyles shouldResize/>}
+          {dica01 && <Dica dica={person.dica01} num={1}/>}
+          {dica02 && <Dica dica={person.dica02} num={2}/>}
+          {dica03 && <Dica dica={person.dica03} num={3}/>}
+          {dica04 && <Dica dica={person.dica04} num={4}/>}
+          {dica05 && <Dica dica={person.dica05} num={5}/>}
+          {dica06 && <Dica dica={person.dica06} num={6}/>}
         </div>
         <div className="area-envio">
           {count < 8 && acerto === false && count > 1 && <input id="barra-escrita" type="text" value={valordoinput} onChange={valor} required/> }
