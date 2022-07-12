@@ -1,12 +1,6 @@
-import { Fragment } from "react"
-
-
-const Dica = ({person, num}) => {
+const Dica = ({ person, num }) => {
     return (
-        <Fragment>
-            <div><p id="dica">{num}ª Dica: {person}</p></div>
-        </Fragment>
-        
+        <div><p id="dica">{num}ª Dica: {person.dica01}</p></div>
     )
 }
 
