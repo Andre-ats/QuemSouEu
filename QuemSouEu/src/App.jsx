@@ -15,6 +15,9 @@ import Dica from "./components/Dica"
 function App(){
   const [person, setPerson] = useState([])
   const [isLoading, setLoading] = useState(true)
+  const [hint, setHint] = useState('')
+  const [userInput, setUserInput] = useState('') 
+  const [blur, setBlur] = useState(30)
 
   {/*Use State*/}
   /*Contador*/ 
@@ -50,14 +53,9 @@ function App(){
         setLoading(false)
       })
   }, [])
-  
-  /*Onclick*/
-  function valor(event){
-    setValordoinput(event.target.value)
-  }
 
   function checkHint({ nome }){
-    if(valordoinput === nome){
+    if(userInput.toLowerCase() === nome.toLowerCase()){
       setDica01(true)
       setDica02(true)
       setDica03(true)
@@ -65,9 +63,8 @@ function App(){
       setDica05(true)
       setDica06(true)
       setAcerto(true)
-    }
-    else{
-      console.log('penis')
+      setCount(7)
+      setBlur(0)
     }
   }
 
@@ -92,7 +89,8 @@ function App(){
       setDica06(true)
       checkHint(person)
     }else if(count === 7){
-      checkHint(person)
+      setErro(true)
+      setBlur(0)
     }
   }
   
@@ -106,28 +104,53 @@ function App(){
     }
   }
 
+  function handleFormSubmit(e){
+    e.preventDefault()
+    if(!e.target.valor.value || e.target.valor.value.length < 4){
+      return
+    }
+
+    setHint(e.target.valor.value)
+    mudarcount()
+    setUserInput('')
+  }
+
+  function handleCloseModal(){
+    if(acerto){
+      return setAcerto(false)
+    }
+    return setErro(false)
+  }
+
   return(
   <Fragment>
+    {acerto && <Modal onRequestClose={handleCloseModal} isOpen={acerto}><h1>Você acertou!</h1><h3>Volte amanhã para mais!</h3></Modal>}
+    {erro && <Modal onRequestClose={handleCloseModal} isOpen={erro}><h1>Perdeu!</h1><h2>A resposta era: {person.nome}</h2><h3>Volte amanhã para mais!</h3></Modal>}
     {isLoading && <Modal className="modal-loading" ariaHideApp={false} isOpen={isLoading}><BeatLoader /></Modal>}
     <Header abrirmenu={abrirmenu}/>
     {interrogacao && <Menu />}
     <div className="container-inteiro">
       <div className="container-dentro">
         <div className="area-pergunta">
-          {dica01 && <Blur className='person-foto' blurRadius={30} img={person.foto} enableStyles shouldResize/>}
+          {dica01 && <div className="image"><Blur className='person-foto' blurRadius={blur} img={person.foto} enableStyles shouldResize/></div>}
+          <div className="area-envio">
+          { dica01 ?
+          <>
+          <form onSubmit={handleFormSubmit}>
+            <input name='valor'id="barra-escrita" type="text" value={userInput} onChange={(e) => setUserInput(e.target.value)} required/>
+          </form>
+          <button id="button" onClick={mudarcount} disabled={userInput.length < 4}><p>Clique aqui para dicas</p></button>
+          </>
+          : <button id="button"onClick={mudarcount}>Começar!</button>
+          }
+          {count < 8 && acerto === false && <h1 id="dicacount">Dica: {count - 1}/6</h1>}
+        </div>
           {dica01 && <Dica dica={person.dica01} num={1}/>}
           {dica02 && <Dica dica={person.dica02} num={2}/>}
           {dica03 && <Dica dica={person.dica03} num={3}/>}
           {dica04 && <Dica dica={person.dica04} num={4}/>}
           {dica05 && <Dica dica={person.dica05} num={5}/>}
           {dica06 && <Dica dica={person.dica06} num={6}/>}
-        </div>
-        <div className="area-envio">
-          {count < 8 && acerto === false && count > 1 && <input id="barra-escrita" type="text" value={valordoinput} onChange={valor} required/> }
-          {count < 8 && acerto === false && <button id="button" onClick={mudarcount}><p>Clique aqui para dicas</p></button>}
-          {count < 8 && acerto === false && <h1 id="dicacount">Dica: {count - 1}/6</h1>}
-          {acerto && <h1>Você Acertou a resposta era: {person.nome}</h1>}
-          {erro && <h1>Você Perdeu! A resposta era: {person.nome}</h1>}
         </div>
       </div>
     </div>

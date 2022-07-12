@@ -1,6 +1,6 @@
 const Dica = ({ dica, num }) => {
     return (
-        <div><p id="dica">{num}ª Dica: {dica}</p></div>
+        <div className="dica"><p id="dica">{num}ª Dica: {dica}</p></div>
     )
 }
 

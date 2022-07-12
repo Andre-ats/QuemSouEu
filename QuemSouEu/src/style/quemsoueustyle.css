@@ -77,7 +77,7 @@ body {
     height:80%;
     margin:auto;
 }
-.area-pergunta div{
+.area-pergunta .dica{
     margin:15px 0px;
     border:1px solid black;
     border-radius:5px;
