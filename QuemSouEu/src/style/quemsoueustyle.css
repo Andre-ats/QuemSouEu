@@ -1,9 +1,9 @@
-body {
+/*body {
 	background: linear-gradient(-45deg, #ee7752, orange, #f0a607, yellow);
 	background-size: 400% 400%;
 	animation: gradient 5s ease infinite;
 	height: 100vh;
-}
+}*/
 @keyframes gradient {
 	0% {
 		background-position: 0% 50%;
@@ -77,11 +77,11 @@ body {
     height:80%;
     margin:auto;
 }
-.area-pergunta div{
+.dica{
     margin:15px 0px;
     border:1px solid black;
     border-radius:5px;
-    padding:15px;
+    padding:9px;
 }
 /*Area Envio*/
 .area-envio{
@@ -90,6 +90,7 @@ body {
     justify-content:center;
     align-items:center;
 }
+/*
 #button{
     height:40px;
     width:150px;
@@ -97,7 +98,7 @@ body {
     background-color:#f0a607;
     border:1px solid black;
     border-radius:5px;
-}
+}*/
 #barra-escrita{
     height:30px;
     width:300px;
@@ -105,6 +106,16 @@ body {
 }
 #button p{
     margin:0px;
+}
+#modal{
+    color:rgb(35, 35, 35);
+    text-align:center;
+    height:60vh;
+}
+#modal-acerto, #modal-erro{
+    color:rgb(35, 35, 35);
+    text-align:center;
+    height:25vh;
 }
 
 /*Responsividade*/
