@@ -67,7 +67,7 @@ function App(){
       setDica06(true)
       setAcerto(true)
       setAcertoBarra(true)
-      setCount(8)
+      setCount(7)
       setBlur(0)
     }
   }
@@ -93,7 +93,7 @@ function App(){
       setDica06(true)
       checkHint(person)
     }else if(count === 7){
-      if (userInput == person.nome.toLowerCase()){
+      if (userInput.toLowerCase() == person.nome.toLowerCase()){
         setAcerto(true)
         setBlur(0)
       }else{
@@ -102,6 +102,7 @@ function App(){
       }
     }
   }
+  
 
   function handleFormSubmit(e){
     e.preventDefault()
